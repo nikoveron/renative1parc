@@ -1,17 +1,19 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Pantalla Principal</Text>
-      <Image source={require('./assets/favicon.png')} style={styles.image} />
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Listado')}>
-        <Icon name="list" size={20} color="white" />
-        <Text style={styles.buttonText}>Ir al Listado</Text>
-      </TouchableOpacity>
-    </View>
+    <ImageBackground source={require('./assets/pxfuel.jpg')} style={styles.backgroundImage} resizeMode="stretch">
+      <View style={styles.container}>
+        <Text style={styles.title}>Pokemones</Text>
+        {/* <Image source={require('./assets/favicon.png')} style={styles.image} resizeMode="contain" /> */}
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Listado')}>
+          <Icon name="list" size={20} color="white" />
+          <Text style={styles.buttonText}>Ir al Listado</Text>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -42,6 +44,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginLeft: 5,
+  },
+  backgroundImage: {
+    flex: 1,
   },
 });
 

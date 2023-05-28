@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, ActivityIndicator, TextInput, StyleSheet, Image } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, ActivityIndicator, TextInput, StyleSheet, ImageBackground, Image } from 'react-native';
 
 const ListadoScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -75,21 +75,23 @@ const ListadoScreen = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Listado Screen</Text>
-      <TextInput
-        style={styles.searchInput}
-        placeholder="Buscar..."
-        value={searchText}
-        onChangeText={setSearchText}
-      />
-      <FlatList
-        data={pokemonList}
-        renderItem={renderPokemonItem}
-        keyExtractor={(item) => item.name}
-        style={styles.list}
-      />
-    </View>
+    <ImageBackground source={require('./assets/poke.jpg')} style={styles.backgroundImage}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Listado Screen</Text>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Buscar..."
+          value={searchText}
+          onChangeText={setSearchText}
+        />
+        <FlatList
+          data={pokemonList}
+          renderItem={renderPokemonItem}
+          keyExtractor={(item) => item.name}
+          style={styles.list}
+        />
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -145,6 +147,10 @@ const styles = StyleSheet.create({
   deleteButtonText: {
     color: 'white',
     fontSize: 12,
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'adjust', // Ajustar la imagen sin estirarla
   },
 });
 
